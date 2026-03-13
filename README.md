@@ -32,20 +32,33 @@ NEXUS is built as a distributed, high-concurrency microservices ecosystem:
     - A **Flask** dashboard (Port 8081) allowing human-in-the-loop (HITL) intervention to unblock sensors.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Fira Code, monospace', 'primaryTextColor': '#fff', 'lineColor': '#888888', 'clusterBkg': '#1e1e2e', 'clusterBorder': '#333344'}}}%%
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'fontFamily': 'Fira Code, monospace',
+    'primaryTextColor': '#FFFFFF',
+    'titleColor': '#FFFFFF',
+    'lineColor': '#A1A1AA',
+    'clusterBkg': '#1A1A24',
+    'clusterBorder': '#4A4A6A',
+    'edgeLabelBackground': '#282A36',
+    'tertiaryTextColor': '#FFFFFF',
+    'nodeTextColor': '#FFFFFF'
+  }
+}}%%
 flowchart LR
-    %% 🎨 Custom Tech Stack Styling
-    classDef rust fill:#B7410E,stroke:#FFA07A,stroke-width:2px,color:#fff,rx:8px,shadow:true
-    classDef python fill:#3776AB,stroke:#FFD43B,stroke-width:2px,color:#fff,rx:8px,shadow:true
-    classDef redpanda fill:#E0284F,stroke:#FFA07A,stroke-width:2px,color:#fff,rx:8px,shadow:true
-    classDef redis fill:#DC382D,stroke:#FF8C00,stroke-width:2px,color:#fff,rx:8px,shadow:true
-    classDef ai fill:#8A2BE2,stroke:#DDA0DD,stroke-width:2px,color:#fff,rx:12px,shadow:true
-    classDef dashboard fill:#000000,stroke:#00FF00,stroke-width:2px,color:#00FF00,rx:8px,shadow:true
-    classDef external fill:#2F4F4F,stroke:#A9A9A9,stroke-width:2px,color:#fff,rx:8px,shadow:true
-    classDef ui fill:#0F0F0F,stroke:#00E5FF,stroke-width:2px,color:#fff,rx:8px,shadow:true
+    %% 🎨 High-Contrast Tech Stack Styling
+    classDef rust fill:#DD4814,stroke:#FFA07A,stroke-width:2px,color:#FFFFFF,rx:8px,shadow:true
+    classDef python fill:#2B5B84,stroke:#64A6DE,stroke-width:2px,color:#FFFFFF,rx:8px,shadow:true
+    classDef redpanda fill:#D91A40,stroke:#FFB3C6,stroke-width:2px,color:#FFFFFF,rx:8px,shadow:true
+    classDef redis fill:#DC382D,stroke:#FF8C00,stroke-width:2px,color:#FFFFFF,rx:8px,shadow:true
+    classDef ai fill:#6A0DAD,stroke:#DDA0DD,stroke-width:2px,color:#FFFFFF,rx:12px,shadow:true
+    classDef dashboard fill:#0D0D0D,stroke:#39FF14,stroke-width:2px,color:#39FF14,rx:8px,shadow:true
+    classDef external fill:#2F4F4F,stroke:#A9A9A9,stroke-width:2px,color:#FFFFFF,rx:8px,shadow:true
+    classDef ui fill:#111111,stroke:#00E5FF,stroke-width:2px,color:#FFFFFF,rx:8px,shadow:true
 
     %% 📡 External Inputs
-    Sensors(["📡 Sensor Swarm\n(Adversarial Python Sim)"]):::external
+    Sensors(["📡 Sensor Swarm\n(Adversarial Sim)"]):::external
     Admin(("👤 HITL Admin\n(System Override)")):::external
 
     %% 🛡️ The Shield (Rust Layer)
@@ -73,8 +86,8 @@ flowchart LR
     DB[("💾 Redis Time-Series\n(Historical Context)")]:::redis
 
     %% 🌐 Interfaces
-    Override["🛠️ Flask Emergency Dashboard\n(Port 8081)"]:::dashboard
-    Frontend["🖥️ Next.js / Three.js\nDigital Twin Visualization"]:::ui
+    Override["🛠️ Flask Emergency\nDashboard (Port 8081)"]:::dashboard
+    Frontend["🖥️ Next.js / Three.js\nDigital Twin Vis"]:::ui
 
     %% 🔄 Core Data Flow
     Sensors -- "Raw Telemetry" --> Ingest
@@ -99,7 +112,7 @@ flowchart LR
     Override -- "Force Unblock" --> Firewall
     
     %% 🖥️ UI Flow
-    Bus -. "Real-Time WebSocket" .-> Frontend
+    Bus -. "WebSockets" .-> Frontend
 ```
 ---
 
